@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
+const API_URL = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:8000' : '/_/backend');
+
 // Mock data to start with before hooking to API
 const mockProducts = [
     { id: 1, title: 'Premium Plastic Granules', category: 'GRANULES', description: 'High-grade uniformity for injection molding.', image: 'https://images.unsplash.com/photo-1605518216938-7c31b7b14ad1?w=800&q=80' },
@@ -15,7 +17,7 @@ export default function Products() {
 
     React.useEffect(() => {
         // We will fetch from backend later using axios
-        fetch('http://localhost:8000/api/products/')
+        fetch(`${API_URL}/api/products/`)
             .then(res => res.json())
             .then(data => {
                 if (data && data.length > 0) setProducts(data);
@@ -45,7 +47,7 @@ export default function Products() {
                     >
                         <div className="relative h-64 overflow-hidden">
                             <img
-                                src={product.image.startsWith('http') ? product.image : `http://localhost:8000${product.image}`}
+                                src={product.image.startsWith('http') ? product.image : `${API_URL}${product.image}`}
                                 alt={product.title}
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             />

@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Send } from 'lucide-react';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:8000' : '/_/backend');
+
 export default function Contact() {
     const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
     const [status, setStatus] = useState(null);
@@ -10,7 +12,7 @@ export default function Contact() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8000/api/contact/', formData);
+            await axios.post(`${API_URL}/api/contact/`, formData);
             setStatus('Success! Message sent.');
             setFormData({ name: '', email: '', phone: '', message: '' });
         } catch (err) {

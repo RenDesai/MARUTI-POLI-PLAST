@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const API_URL = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:8000' : '/_/backend');
+
 const mockImages = [
     { id: 1, title: 'Extrusion Machine', image: 'https://images.unsplash.com/photo-1502444330042-d1a1ddf9bb5b?w=800&q=80' },
     { id: 2, title: 'Raw Granules', image: 'https://images.unsplash.com/photo-1605518216938-7c31b7b14ad1?w=800&q=80' },
@@ -14,7 +16,7 @@ export default function Gallery() {
     const [images, setImages] = React.useState(mockImages);
 
     React.useEffect(() => {
-        fetch('http://localhost:8000/api/gallery/')
+        fetch(`${API_URL}/api/gallery/`)
             .then(res => res.json())
             .then(data => {
                 if (data && data.length > 0) setImages(data);
@@ -43,7 +45,7 @@ export default function Gallery() {
                         className="group relative h-80 overflow-hidden rounded-2xl glass-card cursor-pointer"
                     >
                         <img
-                            src={img.image.startsWith('http') ? img.image : `http://localhost:8000${img.image}`}
+                            src={img.image.startsWith('http') ? img.image : `${API_URL}${img.image}`}
                             alt={img.title}
                             className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-1000"
                         />
