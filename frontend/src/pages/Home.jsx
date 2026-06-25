@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import ThreeBackground from '../components/ThreeBackground';
 import { ChevronDown, ArrowRight, Settings, Maximize, Target, Activity } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import useSEO from '../hooks/useSEO';
 
 const stats = [
     { label: 'Years Experience', value: '25+' },
@@ -19,6 +20,11 @@ const processes = [
 ];
 
 export default function Home() {
+    useSEO({
+        title: 'High-Quality Plastic Manufacturing & Granules',
+        description: 'Maruti Poliplast is a premier manufacturer of industrial-grade plastic granules, lumps, and masterbatches based in Gujarat, India. Discover our state-of-the-art facility.'
+    });
+
     return (
         <div className="relative w-full overflow-hidden">
             {/* Hero Section */}

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import useSEO from '../hooks/useSEO';
 
 const API_URL = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:8000' : '/_/backend');
 
@@ -13,6 +14,11 @@ const mockProducts = [
 ];
 
 export default function Products() {
+    useSEO({
+        title: 'Our Products | Granules & Lumps',
+        description: 'Browse Maruti Poliplast\'s collection of industrial plastic products, including high-grade plastic granules, HDPE lumps, and color masterbatches.'
+    });
+
     const [products, setProducts] = React.useState(mockProducts);
 
     React.useEffect(() => {

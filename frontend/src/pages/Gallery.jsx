@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import useSEO from '../hooks/useSEO';
 
 const API_URL = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:8000' : '/_/backend');
 
@@ -13,6 +14,11 @@ const mockImages = [
 ];
 
 export default function Gallery() {
+    useSEO({
+        title: 'Factory Gallery | Industrial Showcase',
+        description: 'Take a virtual tour inside our manufacturing unit in Rajkot, Gujarat. View our state-of-the-art machines, storage, and automated production lines.'
+    });
+
     const [images, setImages] = React.useState(mockImages);
 
     React.useEffect(() => {

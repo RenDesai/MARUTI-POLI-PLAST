@@ -2,8 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Droplet, Cpu, Hexagon, ShieldCheck } from 'lucide-react';
 import factoryImg from '../assets/factory.jpeg';
+import useSEO from '../hooks/useSEO';
 
 export default function About() {
+    useSEO({
+        title: 'About Us | Decades of Polymer Excellence',
+        description: 'Learn about Maruti Poliplast\'s history, mission, quality standards, and our commitment to sustainable and high-density plastic polymer production.'
+    });
+
     return (
         <div className="pt-32 pb-24 px-6 max-w-5xl mx-auto min-h-screen">
             <motion.div

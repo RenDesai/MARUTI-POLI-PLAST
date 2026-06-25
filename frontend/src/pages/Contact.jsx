@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Send } from 'lucide-react';
 import axios from 'axios';
+import useSEO from '../hooks/useSEO';
 
 const API_URL = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:8000' : '/_/backend');
 
 export default function Contact() {
+    useSEO({
+        title: 'Contact Us | Request a Quote',
+        description: 'Get in touch with Maruti Poliplast. Reach out to our sales team, view our factory address in Rajkot, Gujarat, or send us a message for business inquiries.'
+    });
+
     const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
     const [status, setStatus] = useState(null);
 
